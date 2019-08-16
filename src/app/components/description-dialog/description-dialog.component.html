@@ -1,0 +1,10 @@
+
+<div mat-dialog-content>
+    <h3 style="display: flex; justify-content: center">Change description</h3>
+  <mat-form-field style="width: 100%;">
+    <textarea matInput [(ngModel)]="data.description" style=" min-height: 150px !important;"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions style="display: flex; justify-content:flex-end">
+  <button mat-button [mat-dialog-close]="data.description" cdkFocusInitial>Close</button>
+</div>

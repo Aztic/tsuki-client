@@ -1,0 +1,55 @@
+<div class="box">
+    <app-toolbar></app-toolbar>
+    <div class="content">
+    <mat-grid-list cols="2" rowHeight="4:1" style="display:flex; flex: 1 1 auto">
+        <!-- Preview of the content -->
+        <mat-grid-tile style="max-height: 100%!important; height:100%!important;overflow-y:auto;">
+            <iframe class="full-screen" id="preview" src="javascript:void(0);" frameBorder="0" scrolling="yes" style="background: white"></iframe>
+        </mat-grid-tile>
+        <!-- Code editor -->
+        <!--<mat-grid-tile style="max-height: 100vh; height:100vh;overflow-y:auto;">-->
+        <mat-grid-tile style="max-height: 100%!important; height:100%!important;overflow-y:auto; background: #263238">
+            <ngx-codemirror
+            class="full-screen"
+            [(ngModel)]="content"
+            (ngModelChange)="changed($event)"
+            [options]="{
+            lineNumbers: true,
+            theme: 'material',
+            mode: 'htmlmixed'
+            }"
+            ></ngx-codemirror>
+        </mat-grid-tile>
+    </mat-grid-list>
+    </div>
+    <mat-toolbar *ngIf="!this.deviceService.isMobile()">
+        <button mat-button (click)="openDialog()">Change description</button>
+        <mat-form-field class="login-full-width">
+                <input matInput [(ngModel)]="name">
+        </mat-form-field>
+        <button mat-button *ngIf="this.id != 'new'" [copy-clipboard]="copyToClipboard()" (copied)="notify($event)">Copy Url</button>
+        <span class="fill-space"></span>
+        <button mat-button (click)="saveTemplate()">Save</button>
+        <button mat-button [routerLink]="'/home'">Exit</button>
+        
+    </mat-toolbar>
+
+    <mat-menu #menuMobile="matMenu">
+        <button mat-menu-item (click)="openDialog()">Change description</button>
+        <button mat-menu-item *ngIf="this.id != 'new'" [copy-clipboard]="copyToClipboard()" (copied)="notify($event)">Copy Url</button>
+        <button mat-menu-item>Save</button>
+        <button mat-menu-item>Exit</button>
+    </mat-menu>
+    <mat-toolbar *ngIf="this.deviceService.isMobile()">
+        <mat-form-field class="login-full-width">
+                <input matInput [(ngModel)]="name" >
+        </mat-form-field>
+        <span class="fill-space"></span>
+        <button mat-icon-button [matMenuTriggerFor]="menuMobile">
+            <mat-icon>view_headline</mat-icon>
+        </button>
+    </mat-toolbar>
+    
+
+    
+</div>

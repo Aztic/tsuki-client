@@ -1,0 +1,11 @@
+<mat-toolbar>
+    <span [routerLink]="'/home'">Tsuki</span>
+    <span class="fill-space"></span>
+    <button mat-icon-button [mat-menu-trigger-for]="menu">
+        <mat-icon>view_headline</mat-icon>
+    </button>
+</mat-toolbar>
+
+<mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logoutClick()">Logout</button>
+</mat-menu>
