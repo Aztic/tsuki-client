@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build-prod": "ng build --prod",
+    "copy-config": "cp ./src/environments/environment.example.ts ./src/environments/environment.ts && cp ./src/environments/environment.prod.example.ts ./src/environments/environment.prod.ts"
   },
   "private": true,
   "dependencies": {
