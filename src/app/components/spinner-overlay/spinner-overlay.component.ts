@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SpinnerOverlayComponent implements OnInit {
   @Input() public message: string;
-  private wrapperClasses = ['spinner-wrapper']
+  public wrapperClasses = ['spinner-wrapper'];
   constructor() { }
   addHide() {
     this.wrapperClasses.push('hide');
